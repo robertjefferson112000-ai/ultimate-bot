@@ -36,13 +36,13 @@ def get_data_path(filename):
 def load_json(filename):
     path = get_data_path(filename)
     if os.path.exists(path):
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             return json.load(f)
     return {}
-
+    
 def save_json(filename, data):
     path = get_data_path(filename)
-    with open(path, 'w') as f:
+    with open(path, "w") as f:
         json.dump(data, f)
 
 # ===== LOAD DATA =====
