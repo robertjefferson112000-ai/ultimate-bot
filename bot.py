@@ -10,8 +10,8 @@ import re
 import hashlib
 
 # ===== CONFIGURATION =====
-TELEGRAM_TOKEN = os.environ.get("8743480713:AAFBv0kNOjPedQ83EF4YVLZVQ2A93YoIbNw")
-DEEPSEEK_API_KEY = os.environ.get("sk-7d6fb18b697842b3b001f98cb211bb93")
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 
 if not TELEGRAM_TOKEN or not DEEPSEEK_API_KEY:
     print("❌ Missing environment variables!")
