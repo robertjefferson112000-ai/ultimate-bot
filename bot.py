@@ -1,4 +1,3 @@
-import asyncio
 import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
@@ -10,38 +9,28 @@ if not TELEGRAM_TOKEN:
     print("❌ Missing TELEGRAM_TOKEN!")
     exit(1)
 
-# ===== SIMPLE START COMMAND =====
+# ===== START COMMAND =====
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "✅ BOT IS WORKING!\n\n"
-        "Your bot is alive and responding!\n"
-        "Now we can slowly add features."
-    )
+    await update.message.reply_text("✅ BOT IS WORKING! Your bot is alive!")
 
-# ===== SIMPLE HELP COMMAND =====
+# ===== HELP COMMAND =====
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "📖 *Available commands:*\n"
-        "/start - Test the bot\n"
-        "/help - Show this message\n"
-        "/ping - Check if bot is alive",
-        parse_mode="Markdown"
-    )
+    await update.message.reply_text("/start - Test the bot\n/help - This message")
 
-# ===== SIMPLE PING COMMAND =====
+# ===== PING COMMAND =====
 async def ping(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🏓 PONG! Bot is alive!")
+    await update.message.reply_text("🏓 PONG!")
 
 # ===== MAIN =====
-async def main():
+def main():
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("ping", ping))
     
-    print("✅ SIMPLE BOT IS RUNNING!")
-    await app.run_polling()
+    print("✅ BOT IS RUNNING!")
+    app.run_polling()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
